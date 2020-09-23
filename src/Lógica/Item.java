@@ -11,6 +11,5 @@ public class Item {
         this.color = color;
         this.precio = precio;
     }
-
-
+    
 }
