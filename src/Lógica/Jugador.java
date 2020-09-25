@@ -28,7 +28,7 @@ public class Jugador {
         System.out.println("****************************************");
         Item tmp = (Item) this.inventario.get(objeto);
         this.inventario.remove(objeto);
-        this.dinero += (tmp.precio * 0.50);
+        this.dinero += (tmp.precio * 0.40);
         System.out.println("Venta efectuada");
         System.out.println("****************************************");
         System.out.println("Inventario 2:");

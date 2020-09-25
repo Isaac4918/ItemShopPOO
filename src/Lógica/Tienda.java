@@ -7,18 +7,6 @@ public class Tienda {
     LinkedList inventario = new LinkedList();
 
     public Tienda(){
-        Item I1 = new Item("I1", "Negro", 1000);
-        Item I2 = new Item("I2", "Negro", 1000);
-        Item I3 = new Item("I3", "Negro", 1000);
-        Item I4 = new Item("I4", "Negro", 1000);
-        Item I5 = new Item("I5", "Negro", 1000);
-        Item I6 = new Item("I6", "Negro", 1000);
-        this.inventario.add(I1);
-        this.inventario.add(I2);
-        this.inventario.add(I3);
-        this.inventario.add(I4);
-        this.inventario.add(I5);
-        this.inventario.add(I6);
 
     }
 
@@ -30,7 +18,7 @@ public class Tienda {
             this.inventario.remove(objeto);
             comprador.dinero -= tmp.precio;
             System.out.println("Compra efectuada");
-            verVenta(comprador);
+            //verVenta(comprador);
         }
         else{
             System.out.println("Dinero insuficiente");
