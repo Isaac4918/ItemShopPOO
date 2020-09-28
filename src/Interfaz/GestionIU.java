@@ -12,8 +12,10 @@ public class GestionIU  extends JFrame {
     //static JList b;
 
     public GestionIU(){
-/*
-        //JFrame ventana_frame=new JFrame();
+
+
+        /*
+        JFrame ventana_frame=new JFrame();
         f=new JFrame("frame");
         setTitle("Tienda");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -29,15 +31,15 @@ public class GestionIU  extends JFrame {
         f.setSize(300,300);
         f.show();
         b.getSelectedIndex();
-*/
 
 
-        /*
+
+
         add(ventana);
         setSize(1024,576);
         setVisible(true);
-*/
 
+*/
     }
 /*
     @Override

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Mostrador extends JFrame{
+
     static JFrame frame;
     static JList inventario_tienda;
     static JList inventario_personaje;
@@ -16,17 +17,22 @@ public class Mostrador extends JFrame{
     static JButton b_comprar;
 
     public Mostrador(){
+        //se crean las instancias principales que va a tener la ventana del mostrador de la tienda
         frame=new JFrame("frame");
-        velocidad=new JLabel("Velocidad");
-        vida=new JLabel("Vida");
-        pago=new JLabel("Pago:");
-        armadura=new JLabel("Armadura");
+        velocidad=new JLabel("9");
+        vida=new JLabel("12");
+        pago=new JLabel("15:");
+        armadura=new JLabel("5");
         b_comprar=new JButton("Comprar");
+        Fondo_mostrador fondo=new Fondo_mostrador();
 
-        velocidad.setFont(new Font("Helvetica", Font.PLAIN, 20));
-        vida.setFont(new Font("Helvetica", Font.PLAIN, 20));
-        pago.setFont(new Font("Helvetica", Font.PLAIN, 20));
-        armadura.setFont(new Font("Helvetica", Font.PLAIN, 20));
+        //se define la fuente y el tamaño que van a tener los label que informan de las estadicas
+        velocidad.setFont(new Font("Helvetica", Font.PLAIN, 14));
+        vida.setFont(new Font("Helvetica", Font.PLAIN, 14));
+        pago.setFont(new Font("Helvetica", Font.PLAIN, 14));
+        armadura.setFont(new Font("Helvetica", Font.PLAIN, 14));
+
+
 
         JPanel panel_tienda=new JPanel(null);
 
@@ -52,6 +58,7 @@ public class Mostrador extends JFrame{
         inventario_tienda=new JList(articulos);
         inventario_personaje=new JList(string_inventario);
 
+
         scroll_tienda=new JScrollPane();
         scroll_inventario=new JScrollPane();
 
@@ -66,19 +73,26 @@ public class Mostrador extends JFrame{
         panel_tienda.add(vida);
         panel_tienda.add(pago);
         panel_tienda.add(armadura);
+        panel_tienda.add(fondo);
 
+        fondo.setBounds(0,0,800,600);
         b_comprar.setBounds(400,500,80,49);
 
         scroll_inventario.setBounds(500,300,280,250);
         scroll_tienda.setBounds(0,150,400,400);
 
-        velocidad.setBounds(420,30,200,100);
-        vida.setBounds(420,60,200,100);
-        pago.setBounds(420,90,200,100);
-        armadura.setBounds(420,120,200,100);
+        velocidad.setBounds(540,83,200,100);
+        vida.setBounds(500,106,200,100);
+        pago.setBounds(583,126,200,100);
+        armadura.setBounds(535,149,200,100);
+
+
 
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+
         frame.add(panel_tienda);
         frame.setSize(800,600);
         frame.show();
@@ -88,4 +102,5 @@ public class Mostrador extends JFrame{
         inventario_personaje.getSelectedIndex();
 
     }
+
 }
