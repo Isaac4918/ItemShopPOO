@@ -6,9 +6,9 @@ public class Jugador {
 
     LinkedList inventario = new LinkedList();
     float dinero;
-    int velocidad;
+    float velocidad;
     int vida;
-    int pagoTrabajo;
+    float pagoTrabajo;
     int armadura;
 
 
@@ -17,7 +17,7 @@ public class Jugador {
         this.velocidad = 1;
         this.vida = 100;
         this.dinero = 1000;
-        this.armadura = 50;
+        this.armadura = 20;
     }
 
     public void vender(int objeto){
@@ -26,7 +26,7 @@ public class Jugador {
         this.dinero += (tmp.precio * 0.40);
     }
 
-    public void mostrar(LinkedList mostrar){
+    /*public void mostrar(LinkedList mostrar){
         String aux = "";
         for(int i = 0; i< mostrar.size(); i++){
             Item tmp = (Item) mostrar.get(i);
@@ -34,5 +34,9 @@ public class Jugador {
             aux += ", ";
         }
         System.out.println(aux);
+    }*/
+
+    public LinkedList getInventario() {
+        return inventario;
     }
 }

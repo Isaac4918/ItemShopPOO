@@ -8,10 +8,10 @@ public class Tienda {
     LinkedList inventario = new LinkedList();
 
     public Tienda(){
-        Item I1 = new Item("A", "negro", 1000);
-        Item I2 = new Item("B", "negro", 1000);
-        Item I3 = new Item("C", "negro", 1000);
-        Item I4 = new Item("D", "negro", 1000);
+        Item I1 = new Item();
+        Item I2 = new Item();
+        Item I3 = new Item();
+        Item I4 = new Item();
 
         inventario.add(I1);
         inventario.add(I2);
@@ -20,21 +20,31 @@ public class Tienda {
     }
 
     public void vender(int objeto, Jugador comprador){
-        verVenta(comprador);
+        //verVenta(comprador);
         Item tmp = (Item) this.inventario.get(objeto);
         if(comprador.dinero >= tmp.precio){
             comprador.inventario.add(tmp);
             this.inventario.remove(objeto);
             comprador.dinero -= tmp.precio;
+            tmp.stats(comprador);
+
+            /*System.out.println("==================");
+            System.out.println("Vida: " + comprador.vida);
+            System.out.println("Armadura: " + comprador.armadura);
+            System.out.println("Velocidad: " + comprador.velocidad);
+            System.out.println("Pago: " + comprador.pagoTrabajo);
+            System.out.println("==================");
+            verVenta(comprador);*/
             System.out.println("Compra efectuada");
-            verVenta(comprador);
+
         }
+
         else{
             System.out.println("Dinero insuficiente");
         }
     }
 
-    public void mostrar(LinkedList mostrar){
+ /*   public void mostrar(LinkedList mostrar){
         String aux = "";
         for(int i = 0; i< mostrar.size(); i++){
             Item tmp = (Item) mostrar.get(i);
@@ -42,20 +52,9 @@ public class Tienda {
             aux += ", ";
         }
         System.out.println(aux);
-    }
+    }*/
 
-    public void verVenta(Jugador comprador){
-        System.out.println("=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*");
-        System.out.println("==================================");
-        System.out.println("Inventario de la tienda: ");
-        mostrar(this.inventario);
-        System.out.println("==================================");
-        System.out.println("Inventario del jugador: ");
-        mostrar(comprador.inventario);
-        System.out.println("==================================");
-        System.out.println("Dinero: " + comprador.dinero);
-        System.out.println("==================================");
-        System.out.println("=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*");
+    public LinkedList getItemsTienda() {
+        return inventario;
     }
-
 }
