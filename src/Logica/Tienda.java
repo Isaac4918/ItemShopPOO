@@ -1,4 +1,4 @@
-package Lógica;
+package Logica;
 
 import java.util.LinkedList;
 

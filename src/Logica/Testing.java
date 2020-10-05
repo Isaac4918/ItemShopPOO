@@ -1,4 +1,4 @@
-package Lógica;
+package Logica;
 
 public class Testing {
     private static Tienda T1;
