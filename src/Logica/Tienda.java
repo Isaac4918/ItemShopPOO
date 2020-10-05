@@ -1,5 +1,6 @@
 package Logica;
 
+
 import java.util.LinkedList;
 
 public class Tienda {
@@ -7,10 +8,18 @@ public class Tienda {
     LinkedList inventario = new LinkedList();
 
     public Tienda(){
+        Item I1 = new Item("A", "negro", 1000);
+        Item I2 = new Item("B", "negro", 1000);
+        Item I3 = new Item("C", "negro", 1000);
+        Item I4 = new Item("D", "negro", 1000);
 
+        inventario.add(I1);
+        inventario.add(I2);
+        inventario.add(I3);
+        inventario.add(I4);
     }
 
-    public void Vender(int objeto, Jugador comprador){
+    public void vender(int objeto, Jugador comprador){
         verVenta(comprador);
         Item tmp = (Item) this.inventario.get(objeto);
         if(comprador.dinero >= tmp.precio){
@@ -18,7 +27,7 @@ public class Tienda {
             this.inventario.remove(objeto);
             comprador.dinero -= tmp.precio;
             System.out.println("Compra efectuada");
-            //verVenta(comprador);
+            verVenta(comprador);
         }
         else{
             System.out.println("Dinero insuficiente");

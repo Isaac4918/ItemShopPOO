@@ -8,8 +8,8 @@ public class Testing {
     public static void main(String[] args) throws InterruptedException {
         T1 = new Tienda();
         J1 = new Jugador();
-        T1.Vender(1, J1);
+        T1.vender(0, J1);
         Thread.sleep(1000);
-        J1.Vender(0);
+        J1.vender(0);
     }
 }
