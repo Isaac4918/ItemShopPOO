@@ -5,49 +5,38 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class GestionIU  extends JFrame {
-    //Ventana ventana=new Ventana();
-    Mostrador mostrador=new Mostrador();
-    //static JFrame f;
-    //static JList b;
+public class GestionIU  extends JFrame implements MouseListener {
+    Ventana ventana=new Ventana();
+    static JFrame ventana_frame;
+    JLabel label_dinero;
+
+
+
+
 
     public GestionIU(){
-
-
-        /*
         JFrame ventana_frame=new JFrame();
-        f=new JFrame("frame");
-        setTitle("Tienda");
+        label_dinero =new JLabel("150");
+        label_dinero.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 26));
+        label_dinero.setForeground(Color.ORANGE);
+
+        JPanel panel_juego=new JPanel(null);
+        panel_juego.add(label_dinero);
+        label_dinero.setBounds(25,25,200,200);
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //addMouseListener(this);
-        JPanel panel_tienda=new JPanel();
-        JLabel label_articulos= new JLabel("seleccione el articulo a comprar");
-        String articulos[]={"bombillo          jsjs          ","propulsor      sjsj","cable sj"};
-        b=new JList(articulos);
-        //b.setSelectedIndex(2);
-        panel_tienda.add(b);
-        panel_tienda.setBackground(Color.BLACK);
-        f.add(panel_tienda);
-        f.setSize(300,300);
-        f.show();
-        b.getSelectedIndex();
-
-
-
-
+        addMouseListener(this);
+        add(panel_juego);
         add(ventana);
         setSize(1024,576);
         setVisible(true);
 
-*/
     }
-/*
+
     @Override
     public void mouseClicked(MouseEvent e) {
-    //mostrador.setClickX(e.getX()); //metodo que al clickear detecte la posicion X del mouse
-    //mostrador.setClickY(e.getY());
-    //ventana.setClickX(e.getX()); //metodo que al clickear detecte la posicion X del mouse
-    //ventana.setClickY(e.getY()); //metodo que al clickear detecte la posicion y del mouse
+    ventana.setClickX(e.getX()); //metodo que al clickear detecte la posicion X del mouse
+    ventana.setClickY(e.getY()); //metodo que al clickear detecte la posicion y del mouse
     }
 
     @Override
@@ -69,7 +58,9 @@ public class GestionIU  extends JFrame {
 
     }
 
-*/
+
+
+
 
 
     public static void main(String args[]){
