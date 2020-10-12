@@ -4,12 +4,12 @@ import java.util.LinkedList;
 
 public class Jugador {
 
-    LinkedList inventario = new LinkedList();
-    float dinero;
-    float velocidad;
-    int vida;
-    float pagoTrabajo;
-    int armadura;
+    public LinkedList inventario = new LinkedList();
+    public int dinero;
+    public int velocidad;
+    public int vida;
+    public int pagoTrabajo;
+    public int armadura;
 
 
     public Jugador(){
@@ -26,15 +26,6 @@ public class Jugador {
         this.dinero += (tmp.precio * 0.40);
     }
 
-    /*public void mostrar(LinkedList mostrar){
-        String aux = "";
-        for(int i = 0; i< mostrar.size(); i++){
-            Item tmp = (Item) mostrar.get(i);
-            aux += tmp.nombre;
-            aux += ", ";
-        }
-        System.out.println(aux);
-    }*/
 
     public LinkedList getInventario() {
         return inventario;
