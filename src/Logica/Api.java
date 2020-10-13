@@ -58,7 +58,8 @@ public class Api {
         String nombre;
         int precio;
         int vida;
-        int pagoTrabajo;
+        int pagoIzquierda;
+        int pagoDerecha;
         int armadura;
         int velocidad;
         Item item = new Item();
@@ -70,36 +71,45 @@ public class Api {
 
         precio = pokemon.getInt("base_stamina");
 
-        int divisor = (int) (Math.random()*6+3);
+        int divisor = (int) (Math.random()*8+3);
 
         switch (nombreaux) {
             case "'s boots" -> {
                 vida = 0;
-                pagoTrabajo = 0;
+                pagoIzquierda = 0;
+                pagoDerecha = 0;
+
                 armadura = (int) (Math.random() * 6 + 2);
                 velocidad = (int) (pokemon.getInt("base_attack") / divisor);
-                item = new Item(nombre, precio, velocidad, vida, pagoTrabajo, armadura);
+                item = new Item(nombre, precio, velocidad, vida, pagoIzquierda, pagoDerecha, armadura);
+                item.categoria= "Armadura";
             }
             case "'s tool" -> {
                 vida = 0;
-                pagoTrabajo = (int) (pokemon.getInt("base_attack") / divisor);
+                pagoIzquierda = (int) (pokemon.getInt("base_attack") / divisor);
+                pagoDerecha = 0;
                 armadura = 0;
                 velocidad = 0;
-                item = new Item(nombre, precio, velocidad, vida, pagoTrabajo, armadura);
+                item = new Item(nombre, precio, velocidad, vida, pagoIzquierda, pagoDerecha, armadura);
+                item.categoria= "Herramienta";
             }
             case "'s shield" -> {
                 vida = (int) (Math.random() * 10 + 2);
-                pagoTrabajo = 0;
+                pagoIzquierda = 0;
+                pagoDerecha = 0;
                 armadura = (int) (pokemon.getInt("base_defense") / divisor);
                 velocidad = (int) (Math.random() *(3-(-6)-1)+(-6));
-                item = new Item(nombre, precio, velocidad, vida, pagoTrabajo, armadura);
+                item = new Item(nombre, precio, velocidad, vida, pagoIzquierda, pagoDerecha, armadura);
+                item.categoria= "Herramienta";
             }
             case "'s heart" -> {
-                vida = (int) (pokemon.getInt("base_defense") / divisor);
-                pagoTrabajo = 0;
+                vida = (int) (pokemon.getInt("base_defense") / divisor*2);
+                pagoIzquierda = 0;
+                pagoDerecha = 4;
                 armadura = 0;
                 velocidad = 0;
-                item = new Item(nombre, precio, velocidad, vida, pagoTrabajo, armadura);
+                item = new Item(nombre, precio, velocidad, vida, pagoIzquierda, pagoDerecha, armadura);
+                item.categoria= "Consumible";
             }
         }
 

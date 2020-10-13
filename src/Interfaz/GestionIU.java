@@ -1,12 +1,20 @@
 package Interfaz;
 
+import Logica.Api;
+import Logica.Jugador;
+import Logica.Tienda;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 
 public class GestionIU  extends JFrame implements MouseListener {
-    Ventana ventana=new Ventana();
+    Jugador jugador=new Jugador();
+    Tienda tienda=new Tienda();
+    Api a1;
+    Ventana ventana=new Ventana(jugador,tienda);
     static JFrame ventana_frame;
     JLabel label_dinero;
 
@@ -14,7 +22,13 @@ public class GestionIU  extends JFrame implements MouseListener {
 
 
 
+
     public GestionIU(){
+        try {
+            this.a1=new Api(tienda);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         JFrame ventana_frame=new JFrame();
         label_dinero =new JLabel("150");
         label_dinero.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 26));
@@ -35,8 +49,8 @@ public class GestionIU  extends JFrame implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-    ventana.setClickX(e.getX()); //metodo que al clickear detecte la posicion X del mouse
-    ventana.setClickY(e.getY()); //metodo que al clickear detecte la posicion y del mouse
+        ventana.setClickX(e.getX()); //metodo que al clickear detecte la posicion X del mouse
+        ventana.setClickY(e.getY()); //metodo que al clickear detecte la posicion y del mouse
     }
 
     @Override

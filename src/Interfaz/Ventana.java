@@ -1,10 +1,15 @@
 package Interfaz;
 
+import Logica.Jugador;
+import Logica.Tienda;
+
 import javax.swing.*;
 import java.awt.*;
 
 
 public class Ventana extends JPanel {
+    Jugador j1;
+    Tienda t2;
     public int getClickX() {
         return clickX;
     }
@@ -28,7 +33,10 @@ public class Ventana extends JPanel {
     static JLabel label_toque;
     int dinero=15;
 
-    public Ventana() {
+    public Ventana(Jugador j1,Tienda t2) {
+        this.j1=j1;
+        this.t2=t2;
+
     }
 
 
@@ -51,12 +59,13 @@ public class Ventana extends JPanel {
 
         if (clickX > 631 && clickX < 1024) { //si se detecta un click en la parte derecha de la pantalla
             if (r2_posx<800) {
-                r2_posx = r2_posx + 40; //el personaje avanza a la derecha
+                r2_posx = r2_posx + j1.velocidad; //el personaje avanza a la derecha
                 r2_frame += 1;  //se cambia el frame que está R2D2
                 clickX = -1;  //las coordenadas del click se reinician y se colocan en una posicion neutral
                 clickY = -1;
             }else{
                 System.out.println("Ganando guita a la derecha");
+                j1.dinero+=1;
                 clickX = -1;  //las coordenadas del click se reinician y se colocan en una posicion neutral
                 clickY = -1;
             }
@@ -65,19 +74,20 @@ public class Ventana extends JPanel {
         if (clickX < 389 && clickX > 0) { //si se detecta un click en la parte izquierda de la pantalla
             if (r2_posx>150) {
                 r2_frame += 1;
-                r2_posx = r2_posx - 40; //el personaje avanza a la izquierda
+                r2_posx = r2_posx - j1.velocidad; //el personaje avanza a la izquierda
                 clickX = -1;  //las coordenadas del click se reinician y se colocan en una posicion neutral
                 clickY = -1;
             }else{
                 System.out.println("Ganando guita izquierda");
-                label_toque.setBounds(clickX,clickY,100,100);
+                j1.dinero+=1;
+                //label_toque.setBounds(clickX,clickY,100,100);
 
                 clickX = -1;  //las coordenadas del click se reinician y se colocan en una posicion neutral
                 clickY = -1;
             }
         }
         if (clickX>390 && clickX<630 && clickY>58 && clickY<148){  //si se detecta click dentro de las coordenadas del boton de tienda
-            Mostrador mostrador=new Mostrador(); //se abre la ventana del mostrador de la tienda
+            Mostrador mostrador=new Mostrador(j1,t2); //se abre la ventana del mostrador de la tienda
             System.out.println("equis"+clickY);
             clickX=-1;  //las coordenadas del click se reinician y se colocan en una posicion neutral
             clickY=-1;

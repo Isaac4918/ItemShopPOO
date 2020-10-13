@@ -16,8 +16,7 @@ public class Tienda {
             comprador.inventario.add(tmp);
             this.inventario.remove(objeto);
             comprador.dinero -= tmp.precio;
-            tmp.stats(comprador);
-
+            //tmp.stats(comprador);
             System.out.println("Compra efectuada");
 
         }
@@ -35,7 +34,7 @@ public class Tienda {
             aux += "Vida: " + tmp.vida + "\n";
             aux += "Armadura: " + tmp.armadura + "\n";
             aux += "Velocidad: " + tmp.velocidad + "\n";
-            aux += "Pago: " + tmp.pagoTrabajo + "\n";
+            aux += "Pago: " + tmp.PagoIzquierda + "\n";
             aux += "==============================\n";
         }
         System.out.println(aux);
