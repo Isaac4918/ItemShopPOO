@@ -47,11 +47,23 @@ public class Api {
         JSONObject test = new JSONObject(json);
         JSONArray pokemons = test.getJSONArray("pokemons");
 
-        for(int i = 0; i < 200; i+=4){
+        LinkedList tmp = new LinkedList();
+
+        for(int i = 0; i < 400; i+=4){
             JSONObject pokemon = pokemons.getJSONObject(i);
             Item aux = creaItem(pokemon);
-            this.tienda.inventario.add(aux);
+            tmp.add(aux);
         }
+
+        int a = 0;
+        while (a<20){
+            int indice = (int) Math.floor(Math.random()*(99-0+1)+0);
+            Item aux = (Item) tmp.get(indice);
+            this.tienda.inventario.add(aux);
+            a++;
+        }
+
+        //
     }
 
     public Item creaItem(JSONObject pokemon){
@@ -80,13 +92,13 @@ public class Api {
                 pagoDerecha = 0;
 
                 armadura = (int) (Math.random() * 6 + 2);
-                velocidad = (int) (pokemon.getInt("base_attack") / divisor);
+                velocidad = (pokemon.getInt("base_attack") / divisor)/2;
                 item = new Item(nombre, precio, velocidad, vida, pagoIzquierda, pagoDerecha, armadura);
                 item.categoria= "Armadura";
             }
             case "'s tool" -> {
                 vida = 0;
-                pagoIzquierda = (int) (pokemon.getInt("base_attack") / divisor);
+                pagoIzquierda = (pokemon.getInt("base_attack") / divisor)/2;
                 pagoDerecha = 0;
                 armadura = 0;
                 velocidad = 0;
@@ -103,11 +115,12 @@ public class Api {
                 item.categoria= "Herramienta";
             }
             case "'s heart" -> {
-                vida = (int) (pokemon.getInt("base_defense") / divisor*2);
+                vida = (pokemon.getInt("base_defense") / divisor*2);
                 pagoIzquierda = 0;
-                pagoDerecha = 4;
+                pagoDerecha = (int) Math.floor(Math.random()*(15-4+1)+4);
                 armadura = 0;
                 velocidad = 0;
+                precio = precio / 3;
                 item = new Item(nombre, precio, velocidad, vida, pagoIzquierda, pagoDerecha, armadura);
                 item.categoria= "Consumible";
             }

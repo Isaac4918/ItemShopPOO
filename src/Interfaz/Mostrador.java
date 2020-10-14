@@ -317,11 +317,26 @@ public class Mostrador extends JFrame implements ActionListener {
 
         armadura.setText(""+jug.armadura);
         int index=inventario_tienda.getSelectedIndex();
-        int velocidad_obj=((Item) t1.inventario.get(index)).velocidad;
-        int vida_obj=((Item) t1.inventario.get(index)).vida;
-        int pago_objI= ((Item) t1.inventario.get(index)).PagoIzquierda;
-        int pago_objD= ((Item) t1.inventario.get(index)).PagoDerecha;
-        int armadura_obj=((Item) t1.inventario.get(index)).armadura;
+
+        int velocidad_obj;
+        int vida_obj;
+        int pago_objI;
+        int pago_objD;
+        int armadura_obj;
+
+        if(t1.inventario.size() != 0){
+            velocidad_obj = ((Item) t1.inventario.get(index)).velocidad;
+            vida_obj = ((Item) t1.inventario.get(index)).vida;
+            pago_objI = ((Item) t1.inventario.get(index)).PagoIzquierda;
+            pago_objD = ((Item) t1.inventario.get(index)).PagoDerecha;
+            armadura_obj = ((Item) t1.inventario.get(index)).armadura;
+        }else{
+            velocidad_obj =0;
+            vida_obj =0;
+            pago_objI = 0;
+            pago_objD = 0;
+            armadura_obj = 0;
+        }
 
 
 

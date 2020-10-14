@@ -55,8 +55,8 @@ public class GestionIU  extends JFrame implements MouseListener {
 
         panel_juego.setComponentZOrder(label_dinero,1);
 
-        ventana.setBounds(100,50,900,500);
-        label_dinero.setBounds(525,0,600,60);
+        ventana.setBounds(88,50,900,500);
+        label_dinero.setBounds(515,0,600,60);
 
 
 

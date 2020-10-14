@@ -29,7 +29,7 @@ public class Jugador {
         this.PagoDerecha = 2;
         this.velocidad = 50;
         this.vida = 100;
-        this.dinero = 1200;
+        this.dinero = 1500;
         this.armadura = 20;
         this.posX=550;
     }
