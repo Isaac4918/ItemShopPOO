@@ -13,15 +13,25 @@ public class Jugador {
     public int PagoIzquierda;
     public int PagoDerecha;
     public int armadura;
+    public int posX;
 
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
 
     public Jugador(){
         this.PagoIzquierda = 2;
         this.PagoDerecha = 2;
-        this.velocidad = 10;
+        this.velocidad = 50;
         this.vida = 100;
         this.dinero = 1200;
         this.armadura = 20;
+        this.posX=550;
     }
 
     public void vender(int objeto){
