@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class Fondo_mostrador extends JPanel {
+public class Fondo_mostrador extends Personaje {
 
 
     public void paint(Graphics g) {

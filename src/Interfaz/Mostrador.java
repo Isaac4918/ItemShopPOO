@@ -49,15 +49,15 @@ public class Mostrador extends JFrame implements ActionListener {
         vida=new JLabel(""+jug.vida);
         pagoi=new JLabel(""+jug.PagoIzquierda);
         pagod=new JLabel(""+jug.PagoIzquierda);
-
         armadura=new JLabel(""+jug.armadura);
+
+
         //se declaran las caracteristicas relativas sumadas por el item seleccionado
         velocidad_rel=new JLabel("9");
         vida_rel=new JLabel("12");
         pagoi_rel=new JLabel("15");
         pagod_rel=new JLabel("15");
         armadura_rel=new JLabel("5");
-
         label_dinero=new JLabel(""+jug.dinero);
         b_comprar=new JButton("Comprar");
         b_vender=new JButton("Vender");
@@ -73,18 +73,15 @@ public class Mostrador extends JFrame implements ActionListener {
         pagod.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 14));
         armadura.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 14));
         label_dinero.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 26));
-
         velocidad_rel.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 14));
         vida_rel.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 14));
         pagoi_rel.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 14));
         pagod_rel.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 14));
-
         armadura_rel.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 14));
 
-
+        //se les da color a los elementos de la ventana
         b_comprar.setBackground(Color.BLACK);
         b_comprar.setForeground(Color.YELLOW);
-
 
         b_vender.setBackground(Color.BLACK);
         b_vender.setForeground(Color.YELLOW);
@@ -93,53 +90,45 @@ public class Mostrador extends JFrame implements ActionListener {
         b_equipar.setForeground(Color.YELLOW);
 
         b_desequipar.setBackground(Color.BLACK);
+
         b_desequipar.setForeground(Color.YELLOW);
-
-
         velocidad.setForeground(Color.WHITE);
         vida.setForeground(Color.WHITE);
         pagoi.setForeground(Color.WHITE);
         pagod.setForeground(Color.WHITE);
-
         armadura.setForeground(Color.WHITE);
-
         velocidad_rel.setForeground(Color.WHITE);
         vida_rel.setForeground(Color.WHITE);
         pagoi_rel.setForeground(Color.WHITE);
         pagod_rel.setForeground(Color.WHITE);
-
         armadura_rel.setForeground(Color.WHITE);
-
-
         label_dinero.setForeground(Color.ORANGE);
 
-
-
+        //se crea el panel que contiene los elementos
         JPanel panel_tienda=new JPanel(null);
 
-        JLabel label_articulos= new JLabel("seleccione el articulo a comprar");
+        //se crean los strings que van a contener los Jlist
         String articulos[]=new String[t1.inventario.size()];
 
         String string_inventario[]=new String[jug.inventario.size()];
 
         String string_equipado[]=new String[jug.equipado.size()];
 
+        //for que agraga los elementos del inventarios a los Jlabel
         for (int i=0;i<jug.equipado.size();i++){
             articulos[i]= ( (Item) jug.equipado.get(i)).nombre;
 
         }
-
         for (int i=0;i<t1.inventario.size();i++){
             articulos[i]= ( (Item) t1.inventario.get(i)).nombre;
 
         }
-
         for (int j=0;j<jug.inventario.size();j++){
             string_inventario[j]= ( (Item) jug.inventario.get(j)).nombre;
 
         }
 
-
+        //se agrega los elementos al Jlist
         inventario_tienda=new JList(articulos);
         inventario_personaje=new JList(string_inventario);
         inv_equipado=new JList(string_equipado);
@@ -153,22 +142,27 @@ public class Mostrador extends JFrame implements ActionListener {
         inventario_tienda.setForeground(Color.WHITE);
         inv_equipado.setForeground(Color.WHITE);
 
-
+        //se le asigna una fuente a la Jlist
         inventario_personaje.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 18));
         inventario_tienda.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 18));
         inv_equipado.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 18));
 
+        //se crea un Scroll para que contenga el Jlist
         scroll_tienda=new JScrollPane();
         scroll_inventario=new JScrollPane();
         scroll_equipado=new JScrollPane();
 
+        //se le agrega al scroll el inventario
         scroll_tienda.setViewportView(inventario_tienda);
         scroll_inventario.setViewportView(inventario_personaje);
         scroll_equipado.setViewportView(inv_equipado);
 
+        //
         inventario_personaje.setSelectedIndex(index_personaje);
         inventario_tienda.setSelectedIndex(index_tienda);
         inv_equipado.setSelectedIndex(index_equipado);
+
+        //se le agrega al panel los elementos
         panel_tienda.add(b_comprar);
         panel_tienda.add(b_vender);
         panel_tienda.add(b_equipar);
@@ -191,12 +185,14 @@ public class Mostrador extends JFrame implements ActionListener {
         panel_tienda.add(fondo);
 
 
+        //se le asigna un tamaño y posicion a cada elemento
         fondo.setBounds(0,0,1050,600);
         b_comprar.setBounds(400,501,85,49);
         b_vender.setBounds(510,500,80,49);
         b_equipar.setBounds(690,500,80,49);
-        b_desequipar.setBounds(910,500,95,49);
+        b_desequipar.setBounds(910,500,120,49);
 
+        //se le agrega la funcionalidad de esucha a los botones
         b_comprar.addActionListener(this);
         b_vender.addActionListener(this);
         b_equipar.addActionListener(this);
@@ -214,8 +210,6 @@ public class Mostrador extends JFrame implements ActionListener {
         armadura.setBounds(820,88,200,100);
         pagoi.setBounds(820,111,200,100);
         pagod.setBounds(820,134,200,100);
-
-
 
         velocidad_rel.setBounds(880,42,200,100);
         vida_rel.setBounds(880,65,200,100);
@@ -324,14 +318,15 @@ public class Mostrador extends JFrame implements ActionListener {
         int pago_objD;
         int armadura_obj;
 
+        //se revisa si hay elementos en el inventario de tienda
         if(t1.inventario.size() != 0){
-            velocidad_obj = ((Item) t1.inventario.get(index)).velocidad;
+            velocidad_obj = ((Item) t1.inventario.get(index)).velocidad; //se extraen las estadisticas del elemento
             vida_obj = ((Item) t1.inventario.get(index)).vida;
             pago_objI = ((Item) t1.inventario.get(index)).PagoIzquierda;
             pago_objD = ((Item) t1.inventario.get(index)).PagoDerecha;
             armadura_obj = ((Item) t1.inventario.get(index)).armadura;
         }else{
-            velocidad_obj =0;
+            velocidad_obj =0; //si no hay elementos se ponen las estadisticas nulas
             vida_obj =0;
             pago_objI = 0;
             pago_objD = 0;
@@ -339,13 +334,14 @@ public class Mostrador extends JFrame implements ActionListener {
         }
 
 
-
+        //se suman las estadisticas del jugador con las del objeto seleccionado
         int cambio_velocidad=jug.velocidad+ velocidad_obj;
         int cambio_vida=jug.vida+vida_obj;
         int cambio_pagoi=jug.PagoIzquierda +pago_objI;
         int cambio_pagod=jug.PagoDerecha +pago_objD;
         int cambio_armadura=jug.armadura+armadura_obj;
 
+        //Gestion del color de las estadisticas relativas
         if (cambio_velocidad>= jug.velocidad){
             velocidad_rel.setForeground(Color.GREEN);
         }else{velocidad_rel.setForeground(Color.RED);}
@@ -366,7 +362,7 @@ public class Mostrador extends JFrame implements ActionListener {
             armadura_rel.setForeground(Color.GREEN);
         }else{armadura_rel.setForeground(Color.RED);}
 
-
+        //se agrega a los labels la informacion
         velocidad_rel.setText(""+cambio_velocidad);
         vida_rel.setText(""+cambio_vida);
         pagoi_rel.setText(""+cambio_pagoi);
@@ -378,6 +374,8 @@ public class Mostrador extends JFrame implements ActionListener {
 
 
     public void actionPerformed(ActionEvent e) {
+
+        //gestion del Boton comprar
         if (e.getSource()==b_comprar){
             if (t1.inventario.size()!=0) {
                 t1.vender(inventario_tienda.getSelectedIndex(), jug);
@@ -388,7 +386,7 @@ public class Mostrador extends JFrame implements ActionListener {
             }
 
         }
-
+        //gestion del boton vender
         if (e.getSource()==b_vender){
             if (jug.inventario.size()!=0) {
                 System.out.println("vendiendo " + inventario_personaje.getSelectedIndex());
@@ -398,6 +396,7 @@ public class Mostrador extends JFrame implements ActionListener {
                 actualizar();
             }
         }
+        //Gestion de boton equipar
         if (e.getSource()==b_equipar){
             if(jug.inventario.size()!=0){
                 jug.equipar(inventario_personaje.getSelectedIndex());
@@ -405,6 +404,7 @@ public class Mostrador extends JFrame implements ActionListener {
                 actualizar();
             }
         }
+        //Gestion de boton desequipar
         if (e.getSource()==b_desequipar){
             if (jug.equipado.size()!=0) {
                 jug.desequipar(inv_equipado.getSelectedIndex());
@@ -415,5 +415,6 @@ public class Mostrador extends JFrame implements ActionListener {
 
 
     }
+
 
 }
